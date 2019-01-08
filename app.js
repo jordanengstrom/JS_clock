@@ -1,29 +1,22 @@
-const secondHand = document.querySelector('.sec-hand');
-const minuteHand = document.querySelector('.min-hand');
-const hourHand   = document.querySelector('.hour-hand');
+const secondHand = document.querySelector('.second');
+const minuteHand = document.querySelector('.minute');
+const hourHand   = document.querySelector('.hour');
 
 function setDate() {
-    const now = new Date();
+    var current = new Date();
+    var seconds = current.getHours() * 3600 + current.getMinutes() * 60 + current.getSeconds();
 
-    const second = now.getSeconds();
-    const secondsDegrees = ((second / 60) * 360) + 90;
+    var secondsDegrees = ((seconds % 60) * 360 / 60 + 180);
     secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
-    if (secondsDegrees % 90 == 0){
-        document.getElementById('S').removeAttribute("transform");
-    }
+  
+    var hourRotate = ((seconds % 43200) * 360 / 43200 + 180);
+    hourHand.style.transform = `rotate(${hourRotate}deg)`;
 
-    const minute = now.getMinutes();
-    const minutesDegrees = ((minute / 60) * 360) + 90;
-    minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;//discontinuous motion, updates once a minute
-    // minuteHand.style.transform = `rotate(${(minute + (second / 60) / 60 * 360) + 180}deg)`; //continuous motion
-    if (minutesDegrees % 90 == 0){
-        document.getElementById('M').removeAttribute("transform");
-    }
+    var minuteRotate = ((seconds % 3600) * 360 / 3600 + 180);
+    minuteHand.style.transform = `rotate(${minuteRotate}deg)`;
 
-    const hour = now.getHours();
-    // const hoursDegrees = ((hour / 12) * 360) + 90;
-    // hourHand.style.transform = `rotate(${hoursDegrees}deg)`; //discontinuous motion, updates once per hour
-    hourHand.style.transform = `rotate(${(hour + (minute / 60) + (second / 3600)) / 12 * 360 + 90}deg)`; //continuous motion
+    var secondRotate = ((seconds % 60) * 360 / 60 + 180);
+    secondHand.style.transform = `rotate(${secondRotate}deg)`;
 }
 
 setInterval(setDate, 1000);

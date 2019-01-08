@@ -1,73 +1,90 @@
-html {
-    background-size: cover;
-    font-family: 'helvetica-neue';
-    text-align: center;
-    font-size: 10px;
-}
-
+@import url('https://fonts.googleapis.com/css?family=Cousine');
 body {
-    background-color: rgb(76, 36, 221);
-    font-size: 2rem;
-    display: flex;
-    flex: 1;
-    min-height: 100vh;
-    align-items: center;
+  background: rgb(147, 53, 255);
 }
 
+.container {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+}
+
+
+/* .analog_container {
+  margin: auto;
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 100px; right: 0;
+  width: 200px; height: 200px;
+}
+
+.mid-line {
+  position: absolute;
+  top: 140px; left: 730px;
+  width: 0; height: 300px;
+  border: 1px dashed #EC7357;
+} */
 
 .clock {
-    width: 30rem;
-    height: 30rem;
-    border: 20px solid white;
-    border-radius: 50%;
-    margin: 50px auto;
-    position: relative;
-    padding: 2rem;
+  position: absolute;
 }
 
-.clock-face {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    transform: translateY(3px);
+.analog {
+  z-index: 1;
+  position: absolute;
+  width: 215px;
+  height: 215px;
+  background: rgb(147, 53, 255);
+  border: 11px solid rgb(255, 255, 255);
+  border-radius: 100%;
 }
 
-.hand {
-    width: 50%;
-    height: 6px;
-    background: white;
-    position: absolute;
-    top: 50%;
-    right: 50%;
-    transform-origin: 100%;
-    transform: rotate(90deg);
-    transition: 0.05s;
-    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+.mid {
+  z-index: 1;
+  position: absolute;
+  top: 117px;
+  left: 114px;
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  background: rgb(255, 255, 255);
 }
 
-.center-cover {
-    background: white;
-    position: absolute;
-    z-index: 10;
-    width: 1.0rem;
-    height: 1.0rem;
-    border-radius: 50%;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: auto;
-  }
-
-#S {
-    height: 2px;
+.hour {
+  z-index: 1;
+  position: absolute;
+  left: 118px;
+  top: 123px;
+  background: rgb(255, 255, 255);
+  width: 5px;
+  height: 70px;
+  transform-origin: top;
 }
 
-#M {
-    height: 4px;
+.minute {
+  z-index: 5;
+  position: absolute;
+  left: 115px;
+  top: 123px;
+  background: rgb(255, 255, 255);
+  width: 5px;
+  height: 85px;
+  transform-origin: top;
 }
 
-#H {
-    /*width: 45%;*/
-    background: white;
+.second {
+  z-index: 1;
+  position: absolute;
+  left: 120px;
+  top: 120px;
+  background: rgb(255, 255, 255);
+  width: 3px;
+  height: 80px;
+  border-radius: 0%;
+  transform-origin: top;
 }
